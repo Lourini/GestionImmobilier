@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="/common/Header :: common-header" />
+<body>
+	<nav th:replace="/common/Header :: navbar" />
+
+	<!--Modal  /// ///-->
+	<div th:replace="/common/Header :: logoutConfirmation" />
+	<!--end of Modal-->
+
+	<div th:replace="/common/Header :: SideNavbar" />
+
+
+	<!--Modal  /// ///-->
+	<div th:replace="/common/Header :: SearchModal" />
+	<!--end of Modal-->
+
+	<div th:replace="/common/Header :: ContentOverlay" />
+
+	<div id="Content" class="Content">
+		<div class="container">
+			<form th:action="@{/addBien}" method="post" th:object="${bien}"
+				enctype="multipart/form-data">
+				<fieldset>
+					<legend class="center-block"> New Bien Information </legend>
+
+					<div class="row">
+						<!-- title -->
+						<div class="form-group col-md-6">
+							<label class="control-label" for="title">* Title</label> <input
+								type="text" name="title" class="form-control" id="title"
+								th:field="*{title}" required="required" placeholder="Title" />
+						</div>
+
+						<!-- author -->
+						<div class="form-group col-md-6">
+							<label class="control-label" for="numTitle">* Numero</label> <input
+								type="text" name="numTitle" class="form-control" id="numTitle"
+								th:field="*{numTitle}" required="required"
+								placeholder="Author" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label class="control-label" for="description">* Date De
+								Création</label> <input type="date" id="createdDate"
+								th:field="*{createdDate}" class="form-control js-datepicker"
+								required />
+						</div>
+						<div class="form-group col-md-6">
+							<label class="control-label" for="updatedDate">* Date De
+								modification</label> <input type="date" id="updatedDate"
+								th:field="*{updatedDate}" class="form-control js-datepicker"
+								required />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label class="control-label" for="programmeId">*
+								Programe</label> <select th:field="*{programmeId}" id="programmeId"
+								name="programmeId" class="form-control">
+								<option value="" selected="selected" disabled="disabled">Please
+									select an option...</option>
+								<option th:value="${programme.id}"
+									th:each="programme : ${programmeList}"
+									th:text="${programme.nomProgramme}"></option>
+							</select>
+						</div>
+
+						<!-- price -->
+						<div class="form-group col-md-6">
+							<label class="col-md-2 control-label" for="prix">*Price</label>
+							<div class="input-group">
+								<input th:value="${bien.prix}" type="number" name="prix"
+									step="0.01" class="form-control" id="prix" placeholder="Price" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="form-group col-md-6">
+						<label class="control-label" for="description">*Description</label>
+							<textarea name="description" rows="5" class="form-control"
+								id="description" th:field="*{description}"
+								placeholder="Description"></textarea>
+					</div>
+					</div>
+
+					<!-- 						upload image -->
+					<!-- 						<div class="form-group"> -->
+					<!-- 							<div class="col-md-2"> -->
+					<!-- 								<label for="bookImage">Upload book image</label> -->
+					<!-- 							</div> -->
+					<!-- 							<div class="col-md-8"> -->
+					<!-- 								<input id="bookImage" type="file" name="bookImage" -->
+					<!-- 									th:value="${book.bookImage}" /> -->
+					<!-- 							</div> -->
+					<!-- 						</div> -->
+
+					<div class="form-group">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-success">Add Bien</button>
+							<a class="btn btn-danger" th:href="@{/BienList}">Cancel</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<!--footer-->
+	<footer th:replace="/common/Header :: footer" />
+	<!--end of footer-->
+
+	<div th:replace="/common/Header :: body-bottom-scripts" />
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+	<link th:href="@{https://fonts.googleapis.com/css?family=Poppins:600&display=swap}" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css}">
+	<script th:src="@{https://kit.fontawesome.com/a81368914c.js}"></script>
+</head>
+  <body>
+	<div class="log">
+		<div class="img">
+			<img th:src="@{img/Building.svg}">
+		</div>
+		<div class="login-content">
+			<form th:action="@{/login}" method="post">
+				<img th:src="@{img/profile.svg}">
+				<h2 class="title">Welcome</h2>
+				<div class="bg-danger" th:if="${param.error}">Invalid username
+					and password.</div>
+				<div class="bg-danger" th:if="${param.logout}">You have been
+					logged out.</div>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Username</h5>
+           		   		<input type="text" required name="username" id="username" class="input">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Password</h5>
+           		    	<input type="password" required name="password" id="password" class="input">
+            	   </div>
+            	</div>
+            	<a href="#">Forgot Password?</a>
+				<input type="submit" class="botton" value="Login">
+				<a class="btn btn-info col-lg-5" href="#">sign-in</a>
+            </form>
+		</div>
+	</div>
+
+	<footer>
+		<div class="container-fluid">
+			<div class="row">
+				<div class=" col-xl-10 col-md-12 col-lg-10  fixed-bottom">
+					<div class="row">
+						<div class="col-lg-7 text-center">
+							<ul class="list-inline">
+								<li class="list-inline-item mr-2"><a href="#" class="text-dark">L.A.V</a></li>
+								<li class="list-inline-item mr-2"><a href="#" class="text-dark">About</a></li>
+								<li class="list-inline-item mr-2"><a href="#" class="text-dark">Support</a></li>
+							</ul>
+						</div>
+						<div class="col-lg-5 text-center ">
+							<p>&copy; 2020 Copyright. Made With <i class="fas fa-heart text-danger"></i> by <span
+									class="text-success">Othmane_Lourini</span> </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+    <script type="text/javascript" th:src="@{js/main.js}"></script>
+</body>
+</html>
